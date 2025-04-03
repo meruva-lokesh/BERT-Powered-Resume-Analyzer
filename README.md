@@ -31,5 +31,4 @@ This project is a great addition to a portfolio for those interested in AI, ML, 
 - **Similarity Calculation:** Uses cosine similarity to compute a match score between the resume and a sample job description.
 - **Web Interface:** Simple and user-friendly frontend built with Flask.
 
-## Project Structure
 
