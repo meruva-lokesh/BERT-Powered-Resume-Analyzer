@@ -18,29 +18,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 2rem;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            margin: 2rem auto;
         }
 
         h1 {
             color: #2c3e50;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .file-input-wrapper {
@@ -57,40 +60,48 @@
             top: 0;
             opacity: 0;
             cursor: pointer;
+            height: 100%;
+            width: 100%;
         }
 
         .file-input-label {
-            display: block;
-            padding: 1rem;
-            background: #ecf0f1;
-            border: 2px dashed #bdc3c7;
-            border-radius: 8px;
+            display: flex;
+            padding: 2rem;
+            background: #f8f9fa;
+            border: 2.5px dashed #dee2e6;
+            border-radius: 12px;
             text-align: center;
-            color: #7f8c8d;
+            color: #495057;
             transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
         }
 
         .file-input-label:hover {
-            background: #dfe6e9;
-            border-color: #3498db;
-            color: #3498db;
+            background: #e9ecef;
+            border-color: #4dabf7;
+            color: #228be6;
         }
 
         button {
-            padding: 1rem;
-            background: #3498db;
+            padding: 1.2rem;
+            background: #228be6;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: transform 0.2s, background 0.3s;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         button:hover {
-            background: #2980b9;
+            background: #1971c2;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(34, 139, 230, 0.3);
         }
 
         button:active {
@@ -98,52 +109,75 @@
         }
 
         .flash {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #2ecc71;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #40c057;
             color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.1rem;
             animation: fadeIn 0.5s ease-in;
+            box-shadow: 0 5px 15px rgba(64, 192, 87, 0.3);
+        }
+
+        .advice {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #fd7e14;
+            color: white;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            animation: fadeIn 0.5s ease-in;
+            box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
         }
 
         .upload-status {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #f1c40f;
-            color: #fff;
-            border-radius: 8px;
-            font-size: 1rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #ffd43b;
+            color: #495057;
+            border-radius: 12px;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 1rem;
             animation: fadeIn 0.5s ease-in;
+            box-shadow: 0 5px 15px rgba(255, 212, 59, 0.3);
         }
 
         .upload-status::before {
             content: "✓";
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: bold;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .container {
                 width: 95%;
-                padding: 1.5rem;
+                padding: 2rem;
             }
 
             h1 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             button {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .file-input-label {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -153,30 +187,35 @@
         <h1>AI Resume Analyzer</h1>
         <form action="/" method="post" enctype="multipart/form-data">
             <div class="file-input-wrapper">
-                <input type="file" name="resume" id="resume" required>
+                <input type="file" name="resume" id="resume" accept=".pdf,.docx" required>
                 <label for="resume" class="file-input-label">
-                    Click to select your resume (PDF or DOCX)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    Drop your resume here or click to browse (PDF or DOCX)
                 </label>
             </div>
             <button type="submit">Analyze Resume</button>
         </form>
 
-        <!-- Display uploaded file status -->
         {% if uploaded_file %}
             <div class="upload-status">
                 File Uploaded: {{ uploaded_file }}
             </div>
         {% endif %}
 
-        <!-- Display flashed messages (match score) if any -->
         {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="flash">
-              {% for message in messages %}
-                <p>{{ message }}</p>
-              {% endfor %}
-            </div>
-          {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% if "Match Score" in message %}
+                        <div class="flash">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% else %}
+                        <div class="advice">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         {% endwith %}
     </div>
 </body>
