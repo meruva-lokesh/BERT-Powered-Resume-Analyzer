@@ -10,6 +10,7 @@ JOB_DESCRIPTION = "Looking for a software engineer skilled in Python, machine le
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    uploaded_file = None  # Variable to store the filename
     if request.method == "POST":
         file = request.files["resume"]
         if file:
@@ -23,10 +24,13 @@ def index():
             cleaned_resume_text = preprocess_text(resume_text)
             match_score = calculate_similarity(cleaned_resume_text, JOB_DESCRIPTION)
 
-            # Flash the match score so it shows once
+            # Store the filename for display
+            uploaded_file = file.filename
+
+            # Flash the match score
             flash(f"Match Score: {match_score}%")
-            return redirect(url_for("index"))
-    return render_template("index.html")
+            return render_template("index.html", uploaded_file=uploaded_file)
+    return render_template("index.html", uploaded_file=uploaded_file)
 
 
 if __name__ == "__main__":
