@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Resume Analyzer</title>
+    <title>BERT-Powered Resume–Job Description Matcher</title>
     <style>
         * {
             margin: 0;
@@ -208,6 +208,11 @@
                     {% if "Match Score" in message %}
                         <div class="flash">
                             <p>{{ message }}</p>
+                        </div>
+                    {% elif "PDF uploaded" in message %}
+                        <!-- Show file upload message as upload-status (in addition to above if needed) -->
+                        <div class="upload-status">
+                            {{ message }}
                         </div>
                     {% else %}
                         <div class="advice">
