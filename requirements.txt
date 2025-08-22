@@ -1,7 +1,21 @@
-Flask
-gunicorn
-transformers
-torch
-pandas
-PyMuPDF
-python-docx
+# Web framework
+Flask==3.1.2
+gunicorn==23.0.0
+
+# NLP & ML
+transformers==4.55.3
+torch==2.8.0
+scikit-learn==1.5.2
+nltk==3.9.1
+
+# Data handling
+numpy==2.3.2
+pandas==2.3.2
+
+# File parsing
+PyMuPDF==1.24.10      # provides `fitz` for PDFs
+python-docx==1.1.2    # provides `docx` for Word files
+
+# Utilities
+tqdm==4.67.1          # used internally by transformers
+requests==2.32.3      # safe version for HF model downloads
