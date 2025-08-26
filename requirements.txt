@@ -36,3 +36,4 @@ numpy>=1.24,<3.0
 safetensors>=0.4,<1.0       # speeds up model loads
 huggingface-hub>=0.22,<1.0  # used by transformers
 tokenizers>=0.15,<0.20      # used by transformers
+gunicorn==23.0.0
